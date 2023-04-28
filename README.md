@@ -1,4 +1,4 @@
-* CONFIGURATION FILES 
+*CONFIGURATION FILES 
 - Linux
     - TMUX
     - Fish Shell
