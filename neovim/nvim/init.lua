@@ -41,6 +41,10 @@ vim.cmd("highlight EndOfBuffer guibg=none ctermbg=none")
 vim.cmd("highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd("highlight NotifyBackground guibg=none ctermbg=none")
 -- vim.cmd("highlight termguicolors guibg=none ctermbg=none")
+vim.cmd("highlight Pmenu guibg=none ctermbg=none")
+vim.cmd("highlight PmenuPreview guibg=none ctermbg=none")
+vim.cmd("highlight PmenuSel guifg=#002b36")
+vim.cmd("highlight LVCmdlineBorder guibg=none ctermbg=none")
 
 -- Set NormalFloat to use a transparent background
 vim.api.nvim_exec(
