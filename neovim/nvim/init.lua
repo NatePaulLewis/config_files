@@ -22,8 +22,14 @@ vim.cmd("filetype plugin indent on")
 -- KEYBIDNINGS:----------------------------------------------------------------
 
 -- SET CURSOR COLOR--------------------------------------------------------------------------------
+-- To work with Gruvbox theme:
 -- vim.cmd("highlight CursorLine guibg=#61afef")
-vim.cmd("highlight CursorColumn guibg=#61afef")
+-- vim.cmd("highlight CursorColumn guibg=#61afef")
+-- vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
+
+-- To work with Solarized Dark Theme:
+vim.cmd("highlight CursorLine guibg=#002b36")
+vim.cmd("highlight CursorColumn guibg=#002b36")
 vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
 
 -- SET BACKGROUNDS TO BE TRANSPARENT:----------------------------------------------------------------
