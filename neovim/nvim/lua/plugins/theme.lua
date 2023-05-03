@@ -7,12 +7,43 @@
 --     },
 --   },
 -- }
+
+-- return {
+--   { "nxstynate/solarizedDark.nvim" },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "solarizedDark",
+--     },
+--   },
+-- }
+
+-- return {
+--   { "nxstynate/rosePine.nvim" },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "rosePine",
+--     },
+--   },
+-- }
+
+-- return {
+--   { "nxstynate/monokai.nvim" },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "monokai",
+--     },
+--   },
+-- }
+
 return {
-  { "nxstynate/solarizedDark.nvim" },
+  { "nxstynate/oneDarkPro.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "solarizedDark",
+      colorscheme = "oneDarkPro",
     },
   },
 }
