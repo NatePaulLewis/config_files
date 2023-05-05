@@ -1,4 +1,2 @@
-return {
-  -- disable trouble
-  -- { "folke/trouble.nvim", enabled = false }
-}
+-- disable trouble
+return { "codota/tabnine-nvim" }

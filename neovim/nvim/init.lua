@@ -1,4 +1,3 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
 -- PREFRENCES:-------------------------------------------------------------------------
@@ -8,10 +7,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
--- vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 vim.opt.scrolloff = 999
 vim.opt.so = 999
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.autoindent = true
 vim.opt.shiftwidth = 2
 vim.opt.hlsearch = false
@@ -28,7 +27,7 @@ vim.cmd("filetype plugin indent on")
 -- vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
 
 -- To work with Solarized Dark Theme:
-vim.cmd("highlight CursorLine guibg=#002b36")
+vim.cmd("highlight CursorLine guibg=#005064")
 vim.cmd("highlight CursorColumn guibg=#002b36")
 vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
 
@@ -40,7 +39,7 @@ vim.cmd("highlight SignColumn guibg=none ctermbg=none")
 vim.cmd("highlight EndOfBuffer guibg=none ctermbg=none")
 vim.cmd("highlight NormalFloat guibg=none ctermbg=none")
 vim.cmd("highlight NotifyBackground guibg=none ctermbg=none")
--- vim.cmd("highlight termguicolors guibg=none ctermbg=none")
+vim.cmd("highlight termguicolors guibg=none ctermbg=none")
 vim.cmd("highlight Pmenu guibg=none ctermbg=none")
 vim.cmd("highlight PmenuPreview guibg=none ctermbg=none")
 vim.cmd("highlight PmenuSel guifg=#002b36")
@@ -75,6 +74,33 @@ vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "termguicolors", { bg = "none" })
 
--- PRETTIER CONFIGURATION:
+--PRETTIER CONFIGURATION:----------------------------------------------------------------
 vim.g.neoformat_prefer_global_config = 1
 vim.g.neoformat_prettier_prettierrc = "$HOME/config/nvim/.prettierrc.json"
+
+--TABNINE CONFIGURATION:----------------------------------------------------------------
+--Setup
+-- require("tabnine").setup({
+--   disable_auto_comment = true,
+--   accept_keymap = "<Tab>",
+--   dismiss_keymap = "<C-]>",
+--   debounce_ms = 800,
+--   suggestion_color = { gui = "#808080", cterm = 244 },
+--   exclude_filetypes = { "TelescopePrompt" },
+--   log_file_path = nil, -- absolute path to Tabnine log file
+-- })
+
+-- require("lualine").setup({
+--   tabline = {
+--     lualine_a = {},
+--     lualine_b = { "branch" },
+--     lualine_c = { "filename" },
+--     lualine_x = {},
+--     lualine_y = {},
+--     lualine_z = {},
+--   },
+--   sections = { lualine_c = { "lsp_progress" }, lualine_x = { "tabnine" } },
+-- })
+--
+-- --Status Line
+-- require("tabnine.status").status()
