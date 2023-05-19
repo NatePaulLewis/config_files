@@ -8,15 +8,15 @@
 --   },
 -- }
 
--- return {
---   { "nxstynate/solarizedDark.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "solarizedDark",
---     },
---   },
--- }
+return {
+  { "nxstynate/solarizedDark.nvim" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "solarizedDark",
+    },
+  },
+}
 
 -- return {
 --   { "nxstynate/rosePine.nvim" },
@@ -38,12 +38,22 @@
 --   },
 -- }
 
-return {
-  { "nxstynate/oneDarkPro.nvim" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "oneDarkPro",
-    },
-  },
-}
+-- return {
+--   { "nxstynate/oneDarkPro.nvim" },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "oneDarkPro",
+--     },
+--   },
+-- }
+--
+-- return {
+--   { "nxstynate/catppuccin.nvim" },
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "catppuccin",
+--     },
+--   },
+-- }

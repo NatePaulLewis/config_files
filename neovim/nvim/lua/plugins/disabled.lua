@@ -1,2 +1,4 @@
 -- disable trouble
-return { "codota/tabnine-nvim" }
+return {
+  { "codota/tabnine-nvim" },
+}
