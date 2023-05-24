@@ -27,9 +27,9 @@ vim.cmd("filetype plugin indent on")
 -- vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
 
 -- To work with Solarized Dark Theme:
-vim.cmd("highlight CursorLine guibg=#005064")
-vim.cmd("highlight CursorColumn guibg=#002b36")
-vim.cmd("highlight Cursor guifg=#61afef guibg=#61afef")
+-- vim.cmd("highlight CursorLine guibg=#002b36")
+-- vim.cmd("highlight CursorColumn guibg=#002b36")
+-- vim.cmd("highlight Cursor guifg=#002b36 guibg=#002b36")
 
 -- SET BACKGROUNDS TO BE TRANSPARENT:----------------------------------------------------------------
 vim.cmd("highlight Normal guibg=none ctermbg=none")
@@ -78,29 +78,10 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 vim.g.neoformat_prefer_global_config = 1
 vim.g.neoformat_prettier_prettierrc = "$HOME/config/nvim/.prettierrc.json"
 
---TABNINE CONFIGURATION:----------------------------------------------------------------
---Setup
--- require("tabnine").setup({
---   disable_auto_comment = true,
---   accept_keymap = "<Tab>",
---   dismiss_keymap = "<C-]>",
---   debounce_ms = 800,
---   suggestion_color = { gui = "#808080", cterm = 244 },
---   exclude_filetypes = { "TelescopePrompt" },
---   log_file_path = nil, -- absolute path to Tabnine log file
--- })
+--GITHUB COPILOT:----------------------------------------------------------------
+vim.api.nvim_set_keymap("i", "<C-S>", "v:lua.copilot_accept()", { expr = true })
+vim.g.copilot_no_tab_map = true
 
--- require("lualine").setup({
---   tabline = {
---     lualine_a = {},
---     lualine_b = { "branch" },
---     lualine_c = { "filename" },
---     lualine_x = {},
---     lualine_y = {},
---     lualine_z = {},
---   },
---   sections = { lualine_c = { "lsp_progress" }, lualine_x = { "tabnine" } },
--- })
---
--- --Status Line
--- require("tabnine.status").status()
+function _G.copilot_accept()
+  return vim.fn["copilot#Accept"]("\n")
+end
