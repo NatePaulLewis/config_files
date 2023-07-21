@@ -1,59 +1,58 @@
--- return {
---   { "ellisonleao/gruvbox.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "gruvbox",
---     },
---   },
--- }
+local themes = {
 
-return {
-  { "nxstynate/solarizedDark.nvim" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "solarizedDark",
+  gruvbox = {
+    colorscheme = "gruvbox",
+    { "ellisonleao/gruvbox.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "gruvbox",
+      },
+    },
+  },
+
+  solarizedDark = {
+    colorscheme = "solarizedDark",
+    { "nxstynate/solarizedDark.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "solarizedDark",
+      },
+    },
+  },
+  rosePine = {
+    colorscheme = "rosePine",
+    { "nxstynate/rosePine.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "rosePine",
+      },
+    },
+  },
+
+  monokai = {
+    colorscheme = "monokai",
+    { "nxstynate/monokai.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "monokai",
+      },
+    },
+  },
+
+  oneDarkPro = {
+    colorscheme = "oneDarkPro",
+    { "nxstynate/oneDarkPro.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "oneDarkPro",
+      },
     },
   },
 }
-
--- return {
---   { "nxstynate/rosePine.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "rosePine",
---     },
---   },
--- }
-
--- return {
---   { "nxstynate/monokai.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "monokai",
---     },
---   },
--- }
-
--- return {
---   { "nxstynate/oneDarkPro.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "oneDarkPro",
---     },
---   },
--- }
---
--- return {
---   { "nxstynate/catppuccin.nvim" },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "catppuccin",
---     },
---   },
--- }
+local selectedTheme = "gruvbox"
+return themes[selectedTheme]

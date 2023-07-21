@@ -1,10 +1,22 @@
+local theme = require("plugins.theme")
+
+local themeNameMap = {
+  gruvbox = "gruvbox",
+  solarizedDark = "solarized_dark",
+  monokai = "molokai",
+  oneDarkPro = "onedark",
+  rosePine = "horizon",
+}
+
+local lualineTheme = themeNameMap[theme.colorscheme]
+
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "solarized_dark",
+        theme = lualineTheme,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
