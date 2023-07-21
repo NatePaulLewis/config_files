@@ -1,4 +1,3 @@
-
 # set PowerShell to UTF-8-----------------------------------------------------------------------------------------
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
@@ -55,18 +54,32 @@ Set-Alias powertoys "C:\Program Files\PowerToys\PowerToys.exe"
 Set-Alias mozilla "C:\Program Files\Mozilla Firefox\private_browsing.exe"
 Set-Alias dropbox "C:\Program Files (x86)\Dropbox\Client\Dropbox.exe"
 Set-Alias fusion "C:\Program Files\Blackmagic Design\Fusion 17\Fusion.exe"
-Set-Alias shutdown "shutdown /s"
-Set-Alias restart "shutdown /r"
-# Set-Alias hibernate "rundll32.exe powrprof.dll, SetSuspendState Sleep"
+Set-Alias acrobat "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
+Set-Alias sp404 "C:\Program Files (x86)\Roland\SP-404MKII\SP-404MKII.exe"
 
 # Utilities-----------------------------------------------------------------------------------------
-function which ($command) {
-  Get-Command -Name $command -ErrorAction SilentlyContinue |
-    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+# Function to find the full path of a command
+function Find-CommandPath {
+    param([string]$command)
+
+    Get-Command -Name $command -ErrorAction Stop |
+        Select-Object -ExpandProperty Path
 }
 
-New-Alias -Name ExpandAll -Value "Get-ChildItem -Path .\my_folder\* -Recurse -File | ForEach-Object {Expand-Archive -Path $_.FullName -DestinationPath $_.DirectoryName}"
+# Alias to extract contents of archives inside a folder and its subdirectories
+New-Alias -Name ExpandAll -Value {
+    Get-ChildItem -Path .\my_folder\* -Recurse -File |
+        ForEach-Object {
+            Expand-Archive -Path $_.FullName -DestinationPath $_.DirectoryName
+        }
+}
 
+# Copy File Path to Clipboard-----------------------------------------------------------------------------------------
+function Copy-CurrentLocation {
+    Get-Location | Set-Clipboard
+  }
+
+Set-Alias cptc Copy-CurrentLocation
 
 # Sleep-----------------------------------------------------------------------------------------
 function Sleep-Computer {
@@ -83,4 +96,50 @@ function Sleep-Computer {
     [Power]::SetSuspendState($false, $false, $false)
 }
 Set-Alias -Name hibernate -Value Sleep-Computer
+
+# Lock Computer-----------------------------------------------------------------------------------------
+function Lock-Computer {
+    rundll32.exe user32.dll,LockWorkStation
+}
+
+Set-Alias -Name lock -Value Lock-Computer
+
+# Copy File Path-----------------------------------------------------------------------------------------
+function Copy-FileLocationToClipboard {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
+        [Alias('FullName')]
+        [string]$Path
+    )
+
+    # Resolve the path to get the full file path
+    $resolvedPath = Resolve-Path -Path $Path
+
+    # Copy the file location to the clipboard
+    $resolvedPath | Set-Clipboard
+
+    # Output a message confirming the copy
+    # Write-Host "File location copied to clipboard: $resolvedPath"
+}
+Set-Alias -Name cpfp -Value Copy-FileLocationToClipboard
+
+# Uninstall-Software-----------------------------------------------------------------------------------------
+function Uninstall-Software {
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [String]$SoftwareName
+    )
+ 
+    $software = Get-CimInstance -ClassName Win32_Product | Where-Object { $_.Name -eq $SoftwareName }
+ 
+    if ($software) {
+        $software | ForEach-Object {
+            $_.Uninstall()
+        }
+    } else {
+        Write-Warning "Software '$SoftwareName' not found."
+    }
+}
 
