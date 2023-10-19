@@ -1,5 +1,7 @@
 -- disable trouble
 return {
-  { "codota/tabnine-nvim" },
-  { "ThePrimeagen/harpoon" },
+  { "codota/tabnine-nvim", enabled = false },
+  { "ThePrimeagen/harpoon", enabled = false },
+  { "nvimtools/none-ls.nvim", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
 }
