@@ -53,6 +53,16 @@ local themes = {
       },
     },
   },
+  solarizedOsaka = {
+    colorscheme = "solarized-osaka",
+    { "craftzdog/solarized-osaka.nvim" },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "solarized-osaka",
+      },
+    },
+  },
 }
-local selectedTheme = "gruvbox"
+local selectedTheme = "solarizedOsaka"
 return themes[selectedTheme]

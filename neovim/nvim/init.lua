@@ -12,7 +12,6 @@ vim.opt.scrolloff = 999
 vim.opt.so = 999
 vim.opt.wrap = false
 vim.opt.autoindent = true
-vim.opt.shiftwidth = 2
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.updatetime = 50
@@ -75,8 +74,8 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "termguicolors", { bg = "none" })
 
 --PRETTIER CONFIGURATION:----------------------------------------------------------------
-vim.g.neoformat_prefer_global_config = 1
-vim.g.neoformat_prettier_prettierrc = "$HOME/config/nvim/.prettierrc.json"
+-- vim.g.neoformat_prefer_global_config = 1
+-- vim.g.neoformat_prettier_prettierrc = "$HOME/config/nvim/.prettierrc.json"
 
 --GITHUB COPILOT:----------------------------------------------------------------
 vim.api.nvim_set_keymap("i", "<C-S>", "v:lua.copilot_accept()", { expr = true })
