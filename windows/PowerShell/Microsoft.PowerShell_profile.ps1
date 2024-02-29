@@ -13,6 +13,10 @@ oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
 # oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/star.omp.json' | Invoke-Expression
 # oh-my-posh init pwsh --config 'C:\Users\Nate Lewis\AppData\Local\Programs\oh-my-posh\themes\stelbent-compact.minimal.omp.json' | Invoke-Expression
 
+# Starship Prompt
+# Invoke-Expression (&starship init powershell)
+# $ENV:STARSHIP_CONFIG = "$HOME\example\non\default\path\starship.toml"
+
 # Terminal Icons-----------------------------------------------------------------------------------------
 Import-Module -Name Terminal-Icons
 
@@ -142,4 +146,61 @@ function Uninstall-Software {
         Write-Warning "Software '$SoftwareName' not found."
     }
 }
+
+# Chrome Inject Process Render Doc-----------------------------------------------------------------------------------------
+function Start-ChromeRenderDoc
+{
+  $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+  Set-Variable RENDERDOC_HOOK_EGL=0
+
+  $chromePath
+}
+
+# Clear Temp Files-----------------------------------------------------------------------------------------
+
+function Clear-TempFiles
+{
+  Get-ChildItem -Path $env:windir\Temp\* -Recurse -Force | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
+
+  }
+
+# File Size Search-----------------------------------------------------------------------------------------
+function Get-LargestFiles {
+    [CmdletBinding()]
+    param (
+        [string]$Path = "C:\", # Default path to search
+        [int]$TopN = 10 # Number of top files to list
+    )
+
+    # Find and list the top N largest files
+    Get-ChildItem -Path $Path -Recurse | 
+    Where-Object { ! $_.PSIsContainer } | 
+    Sort-Object Length -Descending | 
+    Select-Object -First $TopN Name, 
+    @{Name="Size";Expression={"{0:N2} MB" -f ($_.length / 1MB)}}, 
+    Directory
+}
+
+function Get-LargestFolders {
+    [CmdletBinding()]
+    param (
+        [string]$Path = "C:\", # Default path to search
+        [int]$TopN = 10 # Number of top folders to list
+    )
+
+    Get-ChildItem -Path $Path -Recurse -File | 
+    Group-Object -Property Directory | 
+    Select-Object -Property Name, 
+    @{Name="TotalSize";Expression={($_.Group | Measure-Object -Property Length -Sum).Sum / 1MB}} | 
+    Sort-Object -Property TotalSize -Descending | 
+    Select-Object -First $TopN
+}
+
+
+
+
+
+
+
 
